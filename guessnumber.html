@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>T_Mcswell - Угадай число</title>
+
+<link href="css/style.css" rel="stylesheet" type="text/css">
+
+<script type="text/javascript">
+	function onePlayerGame(){
+		var answer = Math.floor(Math.random() * 100 + 1);
+		var tryCount = 0;
+		var rightAnswer = 0;
+		do {
+			var userAnswer = parseInt(prompt("Введи число от 1 до 100"));
+			tryCount++;
+			if ((userAnswer >= 1) && (userAnswer < 100)) {
+				if (answer == userAnswer) {
+					alert ("Правильно!");
+					rightAnswer++;
+					break;
+				} else {
+					if (answer < userAnswer) {
+						alert ("Не угадал, твоё число больше загаданного");
+						} else {
+							alert ("Не угадал, твоё число меньше загаданного");
+						}
+			}
+			} else {
+				alert ("Твоё число не подходит, нужно от 1 до 100");
+			}
+		} while (tryCount < 5);
+
+		if (rightAnswer > 0) {
+			alert("Поздравляю, ты угадал число " + answer + " с " + tryCount + "-й попытки!");
+		}
+		else {
+			alert("Игра окончена, ты проиграл. Было загадано число " + answer + ".");
+		}
+	}
+
+	function twoPlayersGame(){
+		var answer = Math.floor(Math.random() * 100 + 1);
+		var tryCount = 0;
+		var rightAnswer = 0;
+		
+		var player1 = prompt("Как зовут первого игрока?");
+		var player2 = prompt("Как зовут второго игрока:?");
+
+		function checkUsersAnswers(player){
+			var userAnswer = prompt(player + ", введите число от 1 до 100:");
+			if ((userAnswer >= 1) && (userAnswer < 100)) {
+				if (answer == userAnswer) {
+					alert ("Правильно!");
+					rightAnswer++;
+					return (rightAnswer && player);					
+				} else {
+					if (answer < userAnswer) {
+						alert ("Не угадал, твоё число больше загаданного");
+						} else {
+							alert ("Не угадал, твоё число меньше загаданного");
+						}
+				}
+			} else {
+				alert ("Твоё число не подходит, нужно от 1 до 100");
+			}
+
+
+
+
+
+
+		}
+
+		do{
+
+			checkUsersAnswers(player1);
+
+			alert(rightAnswer + player1)
+
+			checkUsersAnswers(player2);
+
+			alert(rightAnswer + player2)
+
+		} while (tryCount < 6);
+
+
+	}
+
+</script>
+
+</head>
+
+<body>
+
+<div id="tooplate_body_wrapper" />
+<div id="tooplate_wrapper" />
+
+<div id="tooplate_header">
+	<div id="site_title">
+		<h1>T_Mcswell</h1>
+	</div>
+	<div id="tooplate_menu">
+		<ul>
+			<li><a href="index.html">Главная</a></li>
+			<li><a href="puzzles.html">Загадки</a></li>
+			<li><a href="guessnumber.html">Угадай число</a></li>
+		</ul>
+	</div>
+</div>
+
+<div id="content_box">
+		
+	<div id="content_title">
+		<h2>Игра "Угадай число"</h2>
+	</div>
+
+	<div id="content">
+		<h3>Для одного игрока</h3> 
+
+		<p>Программа загадывает число от 1 до 100. Тебе нужно угадать его за 5 попыток.</p>
+
+		<input type="button" value="Начать игру" onClick="onePlayerGame()" />
+
+		<br/><br/><br/>
+
+		<h3>Для двух игроков</h3>
+
+		<p>Программа загадывает число от 1 до 100. Вам нужно угадать его за 6 попыток на двоих (по 3 каждому). После каждой неудачной попытки ход переходит к другому игроку. Выигрывает тот, кто первым назовёт правильное число.</p>
+
+		<input type="button" value="Начать игру" onClick="twoPlayersGame()" />
+
+	</div>
+
+<div id="tooplate_footer">    
+	Copyright © 2016 <a href="https://vk.com/t_mcswell">М. Тимофеев</a>
+</div>
+
+</div> <!-- end of wrapper -->
+
+</body>
+</html>
